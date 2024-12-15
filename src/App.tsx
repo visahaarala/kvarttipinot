@@ -24,7 +24,6 @@ function App() {
   const pointerDownHandler = (
     e: PointerEvent<HTMLDivElement>
   ) => {
-    console.log('pointerDownHandler');
     setXStartOffset(e.clientX - inputX);
   };
 

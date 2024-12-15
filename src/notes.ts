@@ -26,7 +26,6 @@ export const noteNames = [
 ];
 
 const noteStacksByIndex = (): number[][] => {
-  console.log('noteStacksByIndex');
   const rs: number[][] = [];
   for (let i = 0; i < noteNames.length; i++) {
     const tmp: number[] = [];
