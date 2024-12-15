@@ -101,7 +101,7 @@ function App() {
           korkein ääni:<span>{noteNames[noteIndex]}</span>
         </p>
         <p>
-          toistoja:<span>{noteStack.count}</span>
+          ääniä:<span>{noteStack.count}</span>
         </p>
       </div>
     </div>
