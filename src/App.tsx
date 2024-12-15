@@ -77,7 +77,8 @@ function App() {
               style={{ width: width }}
             >
               <p>
-                <span>{note}</span>{reps > 0 ? reps : ''}
+                <span className='notename'>{note}</span>
+                {reps > 0 ? reps : ''}
               </p>
             </div>
           );
@@ -98,7 +99,10 @@ function App() {
       <div className='info'>
         <h1>4x kvarttipinot</h1>
         <p>
-          korkein ääni:<span>{noteNames[noteIndex]}</span>
+          korkein ääni:
+          <span className='notename'>
+            {noteNames[noteIndex]}
+          </span>
         </p>
         <p>
           ääniä:<span>{noteStack.count}</span>
