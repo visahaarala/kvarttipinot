@@ -15,9 +15,23 @@
 
 body {
   background-color: var(--color-background);
+  background-image: linear-gradient(to bottom, #343, #232);
+  color: var(--color-text);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
 }
 
 #root {
+  height: 100vh;
   height: 100svh;
   width: 100%;
 
@@ -30,12 +44,11 @@ body {
     position: relative;
 
     .info {
-      position: absolute;
+      position: fixed;
       font-size: 1.3rem;
       top: 1.5rem;
       right: 1.5rem;
       text-align: end;
-      color: var(--color-text);
 
       p {
         span {
@@ -55,7 +68,6 @@ body {
       padding: 1rem 0.5rem;
 
       &__note {
-        font-size: 1.7svh;
         height: 30%;
         background-color: var(--color-gray);
         border: 1px solid var(--color-gray-light);
@@ -65,7 +77,7 @@ body {
         position: relative;
 
         p {
-          color: var(--color-text);
+          font-size: 1.8vh;
           position: absolute;
           margin-left: 0.5rem;
           display: inline-block;

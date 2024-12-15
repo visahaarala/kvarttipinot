@@ -96,12 +96,12 @@ function App() {
         </div>
       </div>
       <div className='info'>
-        <h2>4x kvarttipinot</h2>
+        <h1>4x kvarttipinot</h1>
         <p>
-          top note:<span>{noteNames[noteIndex]}</span>
+          korkein ääni:<span>{noteNames[noteIndex]}</span>
         </p>
         <p>
-          notes:<span>{noteStack.count}</span>
+          toistoja:<span>{noteStack.count}</span>
         </p>
       </div>
     </div>

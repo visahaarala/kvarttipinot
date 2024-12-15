@@ -23,8 +23,6 @@ export const noteNames = [
   'd#2',
   'e2',
   'f2',
-  'f#2',
-  'g2',
 ];
 
 const noteStacksByIndex = (): number[][] => {
