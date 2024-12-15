@@ -1,8 +1,9 @@
 :root {
   --color-text: #fafafa;
   --color-gray-light: #777;
-  --color-gray: #ccc3;
-  --color-background: #343;
+  --color-gray: #ccc2;
+  --color-background-one: #343;
+  --color-background-two: #232;
 }
 
 *,
@@ -14,8 +15,12 @@
 }
 
 body {
-  background-color: var(--color-background);
-  background-image: linear-gradient(to bottom, #343, #232);
+  background-color: var(--color-background-one);
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-background-two)
+  );
   color: var(--color-text);
   font-family: 'Times New Roman', Times, serif;
 }
