@@ -1,31 +1,26 @@
-export const noteNames = [
-  'f#',
-  'g',
-  'g#',
-  'a',
-  'a#',
-  'b',
-  'c1',
-  'c#1',
-  'd1',
-  'd#1',
-  'e1',
-  'f1',
-  'f#1',
-  'g1',
-  'g#1',
-  'a1',
-  'a#1',
-  'b1',
-  'c2',
-  'c#2',
-  'd2',
-  'd#2',
-  'e2',
-  'f2',
-];
+export type NumNotesOption = 19 | 29 | 39 | 49;
 
-const noteStacksByIndex = (): number[][] => {
+export const numNotesOptions: NumNotesOption[] = [19, 29, 39, 49];
+
+export const generateNoteNames = (numNotes: NumNotesOption): string[] => {
+  const intervals = [2, 2, 1, 2, 2, 2, 1];
+  const alphabets = 'cdefgab';
+  const notes: string[] = alphabets
+    .split('')
+    .map((alphabet, index) =>
+      intervals[index] === 2 ? [alphabet, alphabet + '#'] : alphabet
+    )
+    .flat();
+  const noteNames: string[] = [];
+  const lowestIndex = notes.indexOf('f#');
+  for (let i = lowestIndex; i < lowestIndex + numNotes; i++) {
+    const octave = Math.floor(i / notes.length);
+    noteNames.push(notes[i % notes.length] + (octave === 0 ? '' : octave));
+  }
+  return noteNames;
+};
+
+const noteStacksByIndex = (noteNames: string[]): number[][] => {
   const rs: number[][] = [];
   for (let i = 0; i < noteNames.length; i++) {
     const tmp: number[] = [];
@@ -34,9 +29,7 @@ const noteStacksByIndex = (): number[][] => {
         let fourthsDown = 0;
         while (j - k - fourthsDown * 5 >= 0) {
           const noteIndex = j - k - fourthsDown * 5;
-          tmp[noteIndex] = tmp[noteIndex]
-            ? tmp[noteIndex] + 1
-            : 1;
+          tmp[noteIndex] = tmp[noteIndex] ? tmp[noteIndex] + 1 : 1;
           fourthsDown++;
         }
       }
@@ -46,13 +39,13 @@ const noteStacksByIndex = (): number[][] => {
   return rs;
 };
 
-export type noteStackInfo = {
+export type NoteStackInfo = {
   data: { reps: number; pctg: number }[];
   count: number;
 };
 
-const noteStacksPercentage = (): noteStackInfo[] => {
-  const ns = noteStacksByIndex();
+export const generateNoteStacks = (noteNames: string[]): NoteStackInfo[] => {
+  const ns = noteStacksByIndex(noteNames);
   const max = ns.slice(-1)[0][0];
   return ns.map((stack) => {
     let count = 0;
@@ -66,5 +59,3 @@ const noteStacksPercentage = (): noteStackInfo[] => {
     return { count, data };
   });
 };
-
-export const noteStacks = noteStacksPercentage();

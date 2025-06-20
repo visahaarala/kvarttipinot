@@ -12,6 +12,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 body {
@@ -62,6 +63,28 @@ h1 {
           width: 2.4rem;
         }
       }
+      .upDown {
+        margin-top: 6vh;
+        margin-right: 2.5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 4vh;
+
+        & > div {
+          $size: 5vh;
+          width: $size;
+          height: calc($size * 1.5);
+
+          &:nth-child(2) {
+            transform: rotate(180deg);
+          }
+        }
+
+        .disabled {
+          color: var(--color-gray-light);
+        }
+      }
     }
 
     .barchart {
@@ -70,7 +93,7 @@ h1 {
       display: flex;
       flex-direction: column-reverse;
       align-items: start;
-      gap: 1vw;
+      gap: 0.7vh;
       padding: 0.5rem 0;
 
       &__note {
@@ -83,17 +106,20 @@ h1 {
         position: relative;
 
         p {
-          font-size: 1.8vh;
+          // font-size: 1.8vh;
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
           margin-left: 0.5rem;
           display: inline-block;
-          width: 4rem;
+          width: 10rem;
+          // background-color: blue;
 
           span {
             display: inline-block;
-            width: 2.2rem;
+            // width: 2.7rem;
+            // width: 5vh;
+            // width: .2rem;
           }
         }
       }
