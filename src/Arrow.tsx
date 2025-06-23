@@ -4,7 +4,7 @@ const Arrow = () => (
       d='M10 3 L10 28 M2 15 L10 3 L18 15'
       stroke='currentColor'
       fill='none'
-      strokeWidth='1'
+      strokeWidth='1.5'
       strokeLinejoin='round'
     />
   </svg>
