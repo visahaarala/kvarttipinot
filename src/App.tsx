@@ -16,21 +16,12 @@ function App() {
     noteNames,
     noteStacks,
   } = state;
-  // const [ballStyle, setBallStyle] = useState<CSSProperties>({ left: 0 });
-  // const [xStartOffset, setXStartOffset] = useState<number>();
-  // const [inputX, setInputX] = useState(0);
-  // const [noteIndex, setNoteIndex] = useState(-1);
-  // const [numNotes, setNumNotes] = useState<NumNotesOption>(19);
-
-  // const noteNames = generateNoteNames(numNotes);
-  // const noteStacks = generateNoteStacks(noteNames);
 
   const pointerDownHandler = (e: PointerEvent<HTMLDivElement>) => {
     dispatch({
       type: 'SET_X_START_OFFSET',
       payload: { xStartOffset: e.clientX - inputX },
     });
-    // setXStartOffset(e.clientX - inputX);
   };
 
   const pointerMoveHandler = (e: PointerEvent<HTMLDivElement>) => {
@@ -41,39 +32,11 @@ function App() {
     if (newInputX > inputWidth) newInputX = inputWidth;
     if (newInputX < 0) newInputX = 0;
     dispatch({ type: 'SET_INPUT_X', payload: { inputX: newInputX } });
-    // setInputX(newInputX);
   };
 
   const pointerOutHandler = () => {
     dispatch({ type: 'UNSET_X_START_OFFSET' });
-    // setXStartOffset(undefined);
   };
-
-  // useEffect(() => {
-  //   // When arrow is pressed and numnotes changed
-  //   // Update slider or noteIndex accordingly
-  //   const inputWidth = document.getElementById('inputrail')!.offsetWidth;
-
-  //   console.log(numNotes, noteIndex);
-  //   if (noteIndex > numNotes - 1) {
-  //     // console.log(`setInputX(${inputWidth})`);
-  //     // setInputX(inputWidth);
-  //     console.log(`setInputX(480)`);
-  //     setInputX(480);
-  //   }
-  //   if (noteIndex < numNotes - 1) {
-  //     console.log(`${noteIndex} < (${numNotes} - 1),\n must update inputX`);
-  //   }
-  // }, [numNotes]);
-
-  // useEffect(() => {
-  // console.log(`inputX: ${inputX}`);
-  // const width = document.getElementById('inputrail')!.offsetWidth;
-  // const pctg = (inputX / width) * 100;
-
-  // setBallStyle({ left: `${pctg}%` });
-  // setNoteIndex(Math.floor((pctg / 100) * noteNames.length - 1));
-  // }, [inputX]);
 
   const numNotesOptionIndex = numNotesOptions.indexOf(numNotes);
 
@@ -82,7 +45,6 @@ function App() {
     if (newIndex >= 0 && newIndex < numNotesOptions.length) {
       const numNotes = numNotesOptions[newIndex];
       dispatch({ type: 'SET_NUM_NOTES', payload: { numNotes } });
-      // setNumNotes(newNumNotes);
     }
   };
 
