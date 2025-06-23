@@ -83,6 +83,7 @@ h1 {
         }
 
         .disabled {
+          cursor: default;
           color: var(--color-gray-light);
         }
       }

@@ -44,7 +44,6 @@ export const reducer = (
   state: ProgramState,
   action: ReducerAction
 ): ProgramState => {
-  console.log('reducer', action.type);
   switch (action.type) {
     case 'SET_X_START_OFFSET': {
       return { ...state, xStartOffset: action.payload!.xStartOffset! };
@@ -82,10 +81,15 @@ export const reducer = (
         newState.ballStyle = { left: '100%' };
         newState.noteIndex = numNotes - 1;
       } else {
-        // adjust slider to match reality
-        const pctg = (state.noteIndex / (noteNames.length - 1)) * 100;
-        newState.ballStyle = { left: `${pctg}%` };
-        newState.inputX = (inputWidth * pctg) / 100;
+        if (state.noteIndex === -1) {
+          newState.ballStyle = { left: '0%' };
+          newState.inputX = 0;
+        } else {
+          // adjust slider to match reality
+          const pctg = ((state.noteIndex + 1) / noteNames.length) * 100;
+          newState.ballStyle = { left: `${pctg}%` };
+          newState.inputX = (inputWidth * pctg) / 100;
+        }
       }
       return newState;
     }
